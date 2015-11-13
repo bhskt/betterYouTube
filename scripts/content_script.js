@@ -1,7 +1,6 @@
 (function () {
     'use strict';
-    let idsCached = new Map(),
-        findParent = function (node, query) {
+    let findParent = function (node, query) {
             let parent = node.parentElement;
             while(parent && !parent.matches(query)) {
                 parent = parent.parentElement;
@@ -10,19 +9,18 @@
         },
         port = chrome.runtime.connect();
     port.onMessage.addListener(function (videos) {
+        console.log(videos);
         videos.forEach(function (video) {
-            if(!idsCached.has(video.id)) {
-                idsCached.set(video.id, video.statistics);
-                let thumbnails = document.body.getElementsByTagName('img');
-                for(let thumbnailsCount = 0; thumbnailsCount < thumbnails.length; thumbnailsCount += 1) {
-                    let thumbnail = thumbnails.item(thumbnailsCount),
-                        a = findParent(thumbnail, 'a[href*="watch?v=' + video.id + '"]');
-                    if(a) {
-                        let byt = document.createElement('div');
-                        byt.setAttribute('class', 'better-youtube-0');
-                        byt.innerText = video.statistics.likePercent;
-                        thumbnail.parentNode.insertBefore(byt, thumbnail.nextSibling);
-                    }
+            let thumbnails = document.body.getElementsByTagName('img');
+            for(let thumbnailsCount = 0; thumbnailsCount < thumbnails.length; thumbnailsCount += 1) {
+                let thumbnail = thumbnails.item(thumbnailsCount),
+                    a = findParent(thumbnail, 'a[href*="watch?v=' + video.id + '"]');
+                if(a) {
+                    
+                    let byt = document.createElement('div');
+                    byt.setAttribute('class', 'better-youtube-0');
+                    byt.innerHTML = '<div class="byt-like-percent" style="width:' + video.statistics.likePercent + '%;"></div>';
+                    thumbnail.parentNode.insertBefore(byt, thumbnail);
                 }
             }
         });

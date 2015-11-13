@@ -1,0 +1,17 @@
+.better-youtube-0 {
+	background-color: #e52d27;
+	height: 4px;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 99999;
+}
+.byt-like-percent {
+	background-color: #4dc247;
+	display: inline-block;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+}

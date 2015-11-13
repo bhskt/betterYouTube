@@ -4,7 +4,6 @@
         idsProcessed = new Set(),
         idsCached = new Map();
     chrome.runtime.onConnect.addListener(function (port) {
-        chrome.pageAction.show(port.sender.tab.id);
         port.onMessage.addListener(function (idsReceived) {
             let idsNew = idsReceived.filter((id) => !idsProcessed.has(id)),
                 idsOld = idsReceived.filter((id) => idsCached.has(id));
@@ -34,8 +33,7 @@
                 request.send();
             }
             if(idsOld.length) {
-                idsOld.map((id) => idsCached.get(id));
-                port.postMessage(idsOld);
+                port.postMessage(idsOld.map((id) => idsCached.get(id)));
             }
         });
     });
