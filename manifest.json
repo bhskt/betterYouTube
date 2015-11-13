@@ -1,10 +1,12 @@
 {
     "manifest_version": 2,
-    "name": "Better YouTube",
-    "description": "Shows the like dislike rating bar over all video thumbnails on YouTube. Now you don't have to open each one of them to know its rating.",
-    "version": "1.0",
+    "name": "Better YouTube - Ratings Bar On Thumbnails",
+    "description": "Displays the like - dislike ratings bar on all YouTube video thumbnails. Now you don't have to open each to know its rating.",
+    "version": "1.2",
     "icons": {
-        "128": "icon.png"
+        "16": "icons/icon_16.png",
+        "48": "icons/icon_48.png",
+        "128": "icons/icon_128.png"
     },
     "author": "Bhaskar Tiwari",
     "background": {
@@ -20,9 +22,8 @@
         }
     ],
     "permissions": [
-        "http://*.jsontest.com/",
-        "https://*.jsontest.com/",
-        "webNavigation"
+        "http://*.googleapis.com.com/",
+        "https://*.googleapis.com.com/"
     ],
     "short_name": "BYT"
 }

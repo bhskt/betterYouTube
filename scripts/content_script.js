@@ -38,6 +38,10 @@
                             if(id && id[1]) {
                                 id = id[1];
                                 ids.add(id);
+                                if(ids.size === 20) {
+                                    port.postMessage([...ids]);
+                                    ids.clear();
+                                }
                             }
                         }
                     }
