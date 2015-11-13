@@ -1,0 +1,32 @@
+{
+    "manifest_version": 2,
+    "name": "Better YouTube",
+    "description": "Shows the number of views, likes & dislikes beside all video thumbnails on YouTube.",
+    "version": "1.0",
+    "page_action": {
+        "default_icon": {
+            "19": "images/icon19_grey.png",
+            "38": "images/icon38_grey.png"
+        },
+        "default_title": "Better YouTube"
+    },
+    "author": "Bhaskar Tiwari",
+    "background": {
+        "scripts": ["scripts/script.js"],
+        "persistent": true
+    },
+    "content_scripts": [
+        {
+            "matches": ["*://*.youtube.com/*"],
+            "css": ["content_stylesheet.css"],
+            "js": ["scripts/content_script.js"],
+            "run_at": "document_start"
+        }
+    ],
+    "permissions": [
+        "http://*.jsontest.com/",
+        "https://*.jsontest.com/",
+        "webNavigation"
+    ],
+    "short_name": "BYT"
+}
